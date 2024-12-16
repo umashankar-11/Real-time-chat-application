@@ -21,7 +21,7 @@ public class ChatServer {
     private static final Translate translate = TranslateOptions.getDefaultInstance().getService();
     private static final Logger logger = LogManager.getLogger(ChatServer.class);
 
-    // Encryption settings
+    
     private static final String SECRET_KEY = "1234567890123456"; // 16-byte secret key for AES encryption
     private static final String ALGORITHM = "AES";
 
