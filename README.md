@@ -144,5 +144,5 @@ The main class that starts both the server and the client:
    John has left the chat.
    ```
    ## Output
-![WhatsApp Image 2024-12-07 at 12 44 01_f90e6042](https://github.com/user-attachments/assets/2faf32fd-fd19-4a13-9b18-d30912682a89)
+![ScreenShot of output of code](screenshot-java-proj.png)
 
