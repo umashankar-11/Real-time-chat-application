@@ -22,7 +22,7 @@ public class ChatServer {
     private static final Logger logger = LogManager.getLogger(ChatServer.class);
 
     
-    private static final String SECRET_KEY = "1234567890123456"; // 16-byte secret key for AES encryption
+    private static final String SECRET_KEY = "1234567890123456";
     private static final String ALGORITHM = "AES";
 
     public static void main(String[] args) {
@@ -51,8 +51,8 @@ public class ChatServer {
                 client.sendMessage(message);
             }
         }
-        storeMessage(message); // Store the message in file
-        storeMessageToDatabase(message); // Store the message in the database
+        storeMessage(message); 
+        storeMessageToDatabase(message); 
     }
 
     
@@ -175,10 +175,10 @@ public class ChatServer {
                         sendMessage("Status updated to: " + status);
                         logger.info(username + " updated status to: " + status);
                     } else if (line.startsWith("/encrypt ")) {
-                        isEncrypted = !isEncrypted; // Toggle encryption
+                        isEncrypted = !isEncrypted; 
                         sendMessage("Encryption toggled: " + (isEncrypted ? "Enabled" : "Disabled"));
                     } else if (line.startsWith("/audio")) {
-                        // Start recording audio
+                        
                         startAudioRecording();
                     } else {
                         String message = "[" + new Date() + "] " + username + " (" + status + "): " + line;
