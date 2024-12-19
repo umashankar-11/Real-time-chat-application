@@ -44,7 +44,7 @@ public class ChatServer {
         }
     }
 
-    // Broadcasting messages to all connected clients
+    
     public static void broadcastMessage(String message, ClientHandler sender) {
         for (ClientHandler client : clients.values()) {
             if (client != sender) {
@@ -55,18 +55,18 @@ public class ChatServer {
         storeMessageToDatabase(message); // Store the message in the database
     }
 
-    // Broadcasting audio to all clients
+    
     public static void broadcastAudio(File audioFile, ClientHandler sender) {
         for (ClientHandler client : clients.values()) {
             if (client != sender) {
                 client.sendAudio(audioFile);
             }
         }
-        storeMessage("Audio message sent."); // Log audio message in chat history
-        storeMessageToDatabase("Audio message sent."); // Store in the database
+        storeMessage("Audio message sent."); 
+        storeMessageToDatabase("Audio message sent."); 
     }
 
-    // Translating message using Google Translate API
+    
     public static String translateMessage(String message, String targetLanguage) {
         Translation translation = translate.translate(
             message,
@@ -75,7 +75,7 @@ public class ChatServer {
         return translation.getTranslatedText();
     }
 
-    // Storing messages in chat history file
+    
     public static void storeMessage(String message) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("chatHistory.txt", true))) {
             writer.write(message);
@@ -85,7 +85,7 @@ public class ChatServer {
         }
     }
 
-    // Storing messages in the database using JDBC
+    
     public static void storeMessageToDatabase(String message) {
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chat_db", "root", "root")) {
             String sql = "INSERT INTO chat_history (message) VALUES (?)";
@@ -98,7 +98,7 @@ public class ChatServer {
         }
     }
 
-    // Handle client disconnection
+    
     public static void removeClient(ClientHandler clientHandler) {
         clients.remove(clientHandler.getUsername());
     }
@@ -109,8 +109,8 @@ public class ChatServer {
         private BufferedReader in;
         private String username;
         private boolean isAuthenticated = false;
-        private String status = "Online"; // Default status
-        private boolean isEncrypted = false; // Encryption flag
+        private String status = "Online"; 
+        private boolean isEncrypted = false; 
 
         private TargetDataLine targetDataLine;
 
@@ -127,7 +127,7 @@ public class ChatServer {
         @Override
         public void run() {
             try {
-                // Authentication process
+                
                 while (!isAuthenticated) {
                     out.println("Enter username: ");
                     String usernameInput = in.readLine();
@@ -148,7 +148,7 @@ public class ChatServer {
                     }
                 }
 
-                // Main chat loop
+                
                 String line;
                 while ((line = in.readLine()) != null) {
                     if (line.equalsIgnoreCase("exit")) {
@@ -202,7 +202,7 @@ public class ChatServer {
             }
         }
 
-        // Start audio recording and send the recorded file to other clients
+        
         private void startAudioRecording() {
             try {
                 AudioFormat format = new AudioFormat(16000, 8, 1, true, true);
@@ -221,17 +221,17 @@ public class ChatServer {
                 AudioInputStream audioStream = new AudioInputStream(targetDataLine);
                 AudioSystem.write(audioStream, AudioFileFormat.Type.WAVE, audioFile);
 
-                // Broadcasting the recorded audio
+                
                 broadcastAudio(audioFile, this);
                 logger.info("Audio message sent by " + username);
 
-                // Advanced hearing block (sound recognition/analysis)
+               
                 performSoundAnalysis(audioFile);
 
-                // Voice recognition block
+               
                 performVoiceRecognition(audioFile);
 
-                // Voice changeover block
+                
                 performVoiceChangeover(audioFile);
 
             } catch (LineUnavailableException | IOException e) {
@@ -239,18 +239,15 @@ public class ChatServer {
             }
         }
 
-        // Perform sound analysis on the captured audio
+       
         private void performSoundAnalysis(File audioFile) {
-            // Placeholder for advanced sound recognition features
-            // This could be expanded to recognize specific voice commands or detect certain keywords.
-            try {
+                       try {
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
                 AudioFormat format = audioInputStream.getFormat();
                 byte[] audioBytes = new byte[(int) audioFile.length()];
                 audioInputStream.read(audioBytes);
 
-                // Perform some simple analysis (e.g., detect a specific frequency or pattern)
-                // Placeholder logic: Check if the audio data contains a "signature pattern" or keyword
+               
 
                 String detectedKeyword = analyzeAudioForKeywords(audioBytes);
                 if (detectedKeyword != null) {
@@ -263,23 +260,22 @@ public class ChatServer {
             }
         }
 
-        // Analyze the audio file for specific keywords (simplified for demonstration)
+        
         private String analyzeAudioForKeywords(byte[] audioData) {
-            // For this example, we'll look for a simple pattern in the byte data
-            // In a real system, you'd use machine learning models or external APIs for speech recognition
+            
             String[] keywords = {"hello", "stop", "start", "bye"};
 
-            // Simulated analysis: Check if the audio matches any known pattern (e.g., byte sequence)
+            
             for (String keyword : keywords) {
                 if (Arrays.toString(audioData).contains(keyword)) {
                     return keyword;
                 }
             }
 
-            return null; // No keyword detected
+            return null; 
         }
 
-        // Perform voice recognition using Google's Speech-to-Text API
+        
         private void performVoiceRecognition(File audioFile) {
             try {
                 SpeechClient speechClient = SpeechClient.create();
@@ -310,17 +306,17 @@ public class ChatServer {
             }
         }
 
-        // Perform voice changeover (voice modification)
+        
         private void performVoiceChangeover(File audioFile) {
-            // Apply a simple effect (simulating pitch change)
+            
             try {
                 AudioInputStream inputStream = AudioSystem.getAudioInputStream(audioFile);
                 AudioFormat format = inputStream.getFormat();
                 byte[] audioData = inputStream.readAllBytes();
 
-                // Simulating voice change by modifying the pitch (just an example)
+                
                 for (int i = 0; i < audioData.length; i++) {
-                    audioData[i] = (byte) (audioData[i] * 0.8); // Apply a simple effect
+                    audioData[i] = (byte) (audioData[i] * 0.8);
                 }
 
                 File modifiedFile = new File("modified_" + audioFile.getName());
@@ -334,7 +330,7 @@ public class ChatServer {
             }
         }
 
-        // Encrypt a message using AES encryption
+        
         private String encryptMessage(String message) {
             try {
                 SecretKeySpec secretKey = new SecretKeySpec(SECRET_KEY.getBytes(StandardCharsets.UTF_8), ALGORITHM);
@@ -348,7 +344,7 @@ public class ChatServer {
             }
         }
 
-        // Send a private message to another user
+        
         private void sendPrivateMessage(String message, String recipientUsername) {
             ClientHandler recipient = clients.get(recipientUsername);
             if (recipient != null) {
@@ -358,14 +354,14 @@ public class ChatServer {
             }
         }
 
-        // Send message to the client
+       
         public void sendMessage(String message) {
             out.println(message);
         }
 
         public void sendAudio(File audioFile) {
             try {
-                // Send the audio file over the socket
+                
                 byte[] byteArray = new byte[(int) audioFile.length()];
                 FileInputStream fis = new FileInputStream(audioFile);
                 BufferedInputStream bis = new BufferedInputStream(fis);
@@ -383,7 +379,7 @@ public class ChatServer {
         }
     }
 
-    // Database helper for storing messages
+    
     public static class DatabaseHelper {
         private static final String DB_URL = "jdbc:mysql://localhost:3306/chat_db";
         private static final String USER = "root";
