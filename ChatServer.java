@@ -26,7 +26,7 @@ public class ChatServer {
     private static final String ALGORITHM = "AES";
 
     public static void main(String[] args) {
-        // Predefined user credentials
+        
         userCredentials.put("user1", "password1");
         userCredentials.put("user2", "password2");
         userCredentials.put("admin", "admin123");
