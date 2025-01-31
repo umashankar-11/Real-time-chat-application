@@ -1,4 +1,4 @@
-# Chat Application
+# Real Time Chat Application
 
 This project implements a simple multi-client chat application using Java sockets. It includes both a server and a client, where the server can handle multiple client connections simultaneously. The chat supports basic features such as sending messages and broadcasting them to all connected clients. The application is divided into two parts:
 
