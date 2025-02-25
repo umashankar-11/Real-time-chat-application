@@ -1,112 +1,136 @@
 import java.time.LocalDateTime;
 
-public class PresenceIndicator {
+public class PresenceIndicator 
+{
     private static LocalDateTime lastActive;
 
-    // Update last activity time
-    public static void updateLastActive() {
+    public static void updateLastActive()
+    {
         lastActive = LocalDateTime.now();
     }
 
-    // Get presence status based on activity time
-    public static String getPresenceStatus() {
-        if (lastActive != null) {
+    public static String getPresenceStatus() 
+    {
+        if (lastActive != null)
+        {
             LocalDateTime now = LocalDateTime.now();
-            if (now.minusMinutes(5).isBefore(lastActive)) {
-                return "Online"; // User was active in the last 5 minutes
-            } else {
-                return "Offline"; // User was inactive for more than 5 minutes
+            if (now.minusMinutes(5).isBefore(lastActive)) 
+            {
+                return "Online";
+            } 
+            else 
+            {
+                return "Offline"; 
             }
         }
-        return "Offline"; // Default status if no activity recorded
+        return "Offline"; 
     }
 
-    public static void main(String[] args) {
-        updateLastActive(); // User is active now
-        System.out.println("Presence Status: " + getPresenceStatus()); // Output: Online
+    public static void main(String[] args) 
+    {
+        updateLastActive(); 
+        System.out.println("Presence Status: " + getPresenceStatus()); 
     }
 }
 import java.time.LocalDateTime;
 
-public class PresenceIndicator {
+public class PresenceIndicator 
+{
     private static LocalDateTime lastActive;
 
-    // Update last activity time
-    public static void updateLastActive() {
+    public static void updateLastActive() 
+    {
         lastActive = LocalDateTime.now();
     }
 
-    // Get presence status based on activity time
-    public static String getPresenceStatus() {
-        if (lastActive != null) {
+    public static String getPresenceStatus() 
+    {
+        if (lastActive != null)
+        {
             LocalDateTime now = LocalDateTime.now();
-            if (now.minusMinutes(5).isBefore(lastActive)) {
-                return "Online"; // User was active in the last 5 minutes
-            } else {
-                return "Offline"; // User was inactive for more than 5 minutes
+            if (now.minusMinutes(5).isBefore(lastActive))
+            {
+                return "Online"; 
+            } 
+            else
+            {
+                return "Offline";
             }
         }
-        return "Offline"; // Default status if no activity recorded
+        return "Offline"; 
     }
 
-    public static void main(String[] args) {
-        updateLastActive(); // User is active now
-        System.out.println("Presence Status: " + getPresenceStatus()); // Output: Online
+    public static void main(String[] args) 
+    {
+        updateLastActive(); 
+        System.out.println("Presence Status: " + getPresenceStatus()); 
     }
 }
 import java.time.LocalDateTime;
 
-public class PresenceIndicator {
+public class PresenceIndicator 
+{
     private static LocalDateTime lastActive;
 
-    // Update last activity time
-    public static void updateLastActive() {
+    public static void updateLastActive() 
+    {
         lastActive = LocalDateTime.now();
     }
 
-    // Get presence status based on activity time
-    public static String getPresenceStatus() {
-        if (lastActive != null) {
+    public static String getPresenceStatus() 
+    {
+        if (lastActive != null) 
+        {
             LocalDateTime now = LocalDateTime.now();
-            if (now.minusMinutes(5).isBefore(lastActive)) {
-                return "Online"; // User was active in the last 5 minutes
-            } else {
-                return "Offline"; // User was inactive for more than 5 minutes
+            if (now.minusMinutes(5).isBefore(lastActive))
+            {
+                return "Online"; 
+            } 
+            else 
+            {
+                return "Offline"; 
             }
         }
-        return "Offline"; // Default status if no activity recorded
+        return "Offline"; 
     }
 
-    public static void main(String[] args) {
-        updateLastActive(); // User is active now
-        System.out.println("Presence Status: " + getPresenceStatus()); // Output: Online
+    public static void main(String[] args) 
+    {
+        updateLastActive(); 
+        System.out.println("Presence Status: " + getPresenceStatus()); 
     }
 }
 import java.time.LocalDateTime;
 
-public class PresenceIndicator {
+public class PresenceIndicator 
+{
     private static LocalDateTime lastActive;
 
-    // Update last activity time
-    public static void updateLastActive() {
+    public static void updateLastActive() 
+    {
         lastActive = LocalDateTime.now();
     }
 
-    // Get presence status based on activity time
-    public static String getPresenceStatus() {
-        if (lastActive != null) {
+    public static String getPresenceStatus() 
+    {
+        if (lastActive != null)
+        {
             LocalDateTime now = LocalDateTime.now();
-            if (now.minusMinutes(5).isBefore(lastActive)) {
-                return "Online"; // User was active in the last 5 minutes
-            } else {
-                return "Offlinse"; // User was inactive for more than 5 minutes
+            if (now.minusMinutes(5).isBefore(lastActive)) 
+            {
+                return "Online"; 
+            } 
+            else 
+            {
+                return "Offlinse"; 
             }
         }
-        return "Offline"; // Default status if no activity recorded
+        return "Offline"; 
     }
 
-    public static void main(String[] args) {
-        updateLastActive(); // User is active now
-        System.out.println("Presence Status: " + getPresenceStatus()); // Output: Online
+    public static void main(String[] args) 
+    {
+        updateLastActive(); 
+        System.out.println("Presence Status: " + getPresenceStatus()); 
     }
 }
