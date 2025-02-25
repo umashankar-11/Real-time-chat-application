@@ -2,9 +2,10 @@ import java.util.List;
 import java.util.regex.*;
 import java.util.stream.Collectors;
 
-public class MentionHashtag {
-    // Extract mentions (e.g., @john) from a message
-    public static List<String> extractMentions(String message) {
+public class MentionHashtag 
+{ 
+    public static List<String> extractMentions(String message)
+    {
         Pattern pattern = Pattern.compile("@(\\w+)");
         Matcher matcher = pattern.matcher(message);
         return matcher.results()
@@ -12,8 +13,8 @@ public class MentionHashtag {
                 .collect(Collectors.toList());
     }
 
-    // Extract hashtags (e.g., #hello) from a message
-    public static List<String> extractHashtags(String message) {
+    public static List<String> extractHashtags(String message) 
+    {
         Pattern pattern = Pattern.compile("#(\\w+)");
         Matcher matcher = pattern.matcher(message);
         return matcher.results()
@@ -21,9 +22,10 @@ public class MentionHashtag {
                 .collect(Collectors.toList());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         String message = "Hey @john, let's meet at the #park.";
-        System.out.println("Mentions: " + extractMentions(message)); // Output: [john]
-        System.out.println("Hashtags: " + extractHashtags(message)); // Output: [park]
+        System.out.println("Mentions: " + extractMentions(message)); 
+        System.out.println("Hashtags: " + extractHashtags(message)); 
     }
 }
